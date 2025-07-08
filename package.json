@@ -1,0 +1,29 @@
+{
+  "name": "ts-web-chat",
+  "version": "1.0.0",
+  "description": "一个学习项目，学习如何使用websocket创建聊天室，包含服务端和客户端实现。",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "build:server": "tsc --project Server/tsconfig.json",
+    "build:client": "tsc --project Client/tsconfig.json",
+    "dev": "tsc --watch",
+    "dev:server": "tsc --project Server/tsconfig.json --watch",
+    "dev:client": "tsc --project Client/tsconfig.json --watch",
+    "clean": "rimraf dist",
+    "start": "node dist/server/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.10",
+    "@types/ws": "^8.18.1",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.8.3"
+  }
+}
