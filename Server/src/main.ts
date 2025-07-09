@@ -22,7 +22,7 @@ server.on('connection', (socket, request) => {
     socket.on('message', (message) => {
         console.log(`【${clientName}】消息: ${message}`);
         clients.forEach((client) => {
-            client.send(`【${clientName}】消息: ${message}`);
+            client.send(`【${clientName}】: ${message}`);
         });
     });
 

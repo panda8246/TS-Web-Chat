@@ -1,8 +1,11 @@
 import WebSocket from "ws";
 import readline from 'readline';
+import { ChatCache } from './ChatCache';
 
 const socket = new WebSocket('ws://localhost:52547');
 let clientname = undefined;
+const chatCache = new ChatCache();
+let rl: readline.Interface;
 
 socket.on('open', () => {
     console.log('连接成功');
@@ -19,13 +22,15 @@ socket.on('message', (message) => {
 });
 
 socket.on('close', () => {
-    console.log('连接关闭');
+    rl.close();
+    console.log('\n连接关闭');
+    process.exit(0);
 });
 
 
 function createReadLine() {
     // 创建 readline 接口，用于从终端获取输入
-    const rl = readline.createInterface({
+    rl = readline.createInterface({
         input: process.stdin,
         output: process.stdout,
         prompt: `您的ID【${clientname}】请输入消息> `
@@ -40,10 +45,16 @@ function createReadLine() {
 }
 
 function handleMsg(msg: string) {
-    
+    chatCache.add(msg);
 }
 
 function flush() {
-
+    const cursorPos = rl.cursor;
+    // 清空控制台
+    console.clear();
+    // 打印缓存
+    console.log(chatCache.getMsg(20).join('\n'));
+    // 打印提示
+    rl.prompt(true);
 }
 
