@@ -11,7 +11,8 @@
     "dev:server": "tsc --project Server/tsconfig.json --watch",
     "dev:client": "tsc --project Client/tsconfig.json --watch",
     "clean": "rimraf dist",
-    "start": "node dist/server/main.js",
+    "start:server": "node dist/server/src/main.js",
+    "start:client": "node dist/client/src/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
