@@ -1,5 +1,6 @@
 一个学习项目，学习如何使用websocket创建聊天室，包含服务端和客户端实现。
 
+# 开发过程记录
 创建项目运行 npm init -y 创建package.json文件  
 安装依赖websocket依赖：npm install ws  
 第一次安装后，还需要初始化ts基础依赖：npm install --save-dev @types/ws @types/node typescript  
@@ -34,6 +35,15 @@ websocket是有心跳机制的，ping和pong，协议规定，一端发了ping�
 wb底层使用tcp连接，理论上也是可以实现keepalive的，但tcp的超时时间很久，且由操作系统决定配置，一般情况下业务是不能依赖tcp保活的。
 
 ---
+Websocket对比Http  
+|  Websocket  |  Http  |
+| :---- | :---- |
+|   使用tcp，双向通信  |  使用tcp，单向通信  |
+|   持久连接，有状态  |  每次连接独立，无状态  |
+|   用于实时通信要求场景  |  用于静态资源和数据传输，不支持实时场景  |
+
+
+
 关注Websocket发起前有Http握手阶段。
 
 
